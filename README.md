@@ -158,16 +158,58 @@ Name: count, Length: 120781, dtype: int64
 ## 3. Final State Analysis
 
 ### Dataset Overview
-- **Name**: cleaned_population_data.csv (or whatever you named it)
-- **Rows**: [Your answer]
-- **Columns**: [Your answer]
+- **Name**: "C:/Users/mihir/OneDrive/Desktop/clean_population_data.csv"
+- **Rows**: same as original with the **removal** of all ages equal to 0, conversion of 1 and 2 to 'male' and 'female' respectively, and years after 2024 
+- **Columns**: income_groups, age, gender, year, population
 
 ### Column Details
-| Column Name | Data Type | Non-Null Count | #Unique Values |  Mean  |
-|-------------|-----------|----------------|----------------|--------|
-| [Column 1]  | [Type]    | [Count]        | [#Unique]      | [Mean] |
-| ...         | ...       | ...            | ...            | ...    |
+#### Data columns (total 5 columns):
+    Column         Non-Null Count  Dtype
+---  ------         --------------  -----
+ 0   income_groups  60000 non-null  object
+ 1   age            60000 non-null  int64
+ 2   gender         60000 non-null  object
+ 3   year           60000 non-null  int64
+ 4   population     60000 non-null  int64
+dtypes: int64(3), object(2)
+
+      income_groups           age gender          year    population
+count          60000  60000.000000  60000  60000.000000  6.000000e+04
+unique             4           NaN      2           NaN           NaN
+top      high_income           NaN   male           NaN           NaN
+freq           15000           NaN  30000           NaN           NaN
+mean             NaN     50.500000    NaN   1987.000000  6.277242e+06
+std              NaN     28.866311    NaN     21.648891  7.000100e+06
+min              NaN      1.000000    NaN   1950.000000  2.100000e+01
+25%              NaN     25.750000    NaN   1968.000000  8.064298e+05
+50%              NaN     50.500000    NaN   1987.000000  4.200848e+06
+75%              NaN     75.250000    NaN   2006.000000  8.135359e+06
+max              NaN    100.000000    NaN   2024.000000  3.383587e+07
+
+Value Counts for Categorical Columns:
+Value counts for 'income_groups':
+income_groups
+high_income            15000
+low_income             15000
+lower_middle_income    15000
+upper_middle_income    15000
+Name: count, dtype: int64
+
+Value counts for 'gender':
+gender
+male      30000
+female    30000
+
+     Column Name  Unique Count
+0  income_groups             4
+1            age           100
+2         gender             2
+3           year            75
+4     population         59176
+
 
 ### Summary of Changes
-- [List major changes made to the dataset]
-- [Discuss any significant changes in data distribution]
+- All age values equal to '0' have been removed
+- Gender column has been renamed from '1' and '2' to 'male' and 'female' respectively
+- All years after 2024 have been removed (future years)
+- Removal of rows results in reduced unique value counts, the year statistics have changed, and the mean population changed as well. 
