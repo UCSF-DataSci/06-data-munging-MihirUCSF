@@ -212,4 +212,5 @@ female    30000
 - All age values equal to '0' have been removed
 - Gender column has been renamed from '1' and '2' to 'male' and 'female' respectively
 - All years after 2024 have been removed (future years)
-- Removal of rows results in reduced unique value counts, the year statistics have changed, and the mean population changed as well. 
+- Removal of rows results in reduced unique value counts, the year statistics have changed, and the mean population changed as well.
+- As stated in the beginning, more info is needed from the codebook as to what the variables are exactly referring to, as a result we have to assume the meaning. 
