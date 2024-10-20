@@ -113,10 +113,15 @@ Name: count, Length: 120781, dtype: int64
    - Example: any year after 2024 with population, age, and gender data 
    - Impact: the years in the future need to cleaned
      
-2. **Population Column**
+4. **Population Column**
    - Again, without the codebook it is unclear what the population is exactly counting, we are not given an area or location.  
    - Affected Column: population 
-   - Impact: due to its ambiguity, it may not provide useful data analysis  
+   - Impact: due to its ambiguity, it may not provide useful data analysis
+    
+2. **General Observations**
+   - Using descriptive statistics on categorical variables don't make sense due to the results being invalid, these only work for numerical variables.
+   - There are 0 duplicated rows
+
 
 ## 2. Data Cleaning Process
 
