@@ -108,7 +108,7 @@ Name: count, Length: 120781, dtype: int64
    - Impact: this variable must be categorized as a categorical variable not numerical
      
 3. **Year Column**
-   - Without the codebook, it is unknown what this variable is referring to, whether it means birth year or when the data was taken from the income group. There are also future years with data, again we do not know what these data points mean. 
+   - Without the codebook, it is unknown what this variable is referring to, whether it means birth year or when the data was taken from the income group. There are also future years with data (it's impossible to have gender and age data for future years), again we do not know what these data points mean. 
    - Affected Column: year
    - Example: any year after 2024 with population, age, and gender data 
    - Impact: the years in the future need to cleaned
@@ -125,20 +125,35 @@ Name: count, Length: 120781, dtype: int64
 
 ## 2. Data Cleaning Process
 
-### Issue 1: [Issue Name]
-- **Cleaning Method**: [Describe your approach]
+### Issue 1: Age Column
+- **Cleaning Method**: remove all ages with '0' as the data
 - **Implementation**:
   ```python
-  # Include relevant code snippet
+  clean_df = df[df['age'] != 0]
   ```
-- **Justification**: [Explain why you chose this method]
+- **Justification**: having an age of '0' does not make sense
 - **Impact**: 
-  - Rows affected: [Number]
-  - Data distribution change: [Describe any significant changes]
+  - Rows affected: 1,208 rows removed  
+  - Data distribution change: reduces the data from removing the rows with age '0'
 
-### Issue 2: [Next Issue]
-- ...
-
+### Issue 2: Gender Column
+- **Cleaning Method**: convert the values '1' to 'male' and '2' to 'female'
+- **Implementation**:
+  ```python
+  clean_df = df['gender'] = df['gender'].replace({1: 'male', 2: 'female'})
+  ```
+- **Justification**: 1 and 2 in gender column is ambiguous so add labels to better define the variable  
+  
+### Issue 3: Year Column
+- **Cleaning Method**: remove all years after 2024 
+- **Implementation**:
+  ```python
+  clean_df = df[df['year'] <= 2024]
+  ```
+- **Justification**: we are assuming it is impossible to have future data with the information we are given (since we are not given a codebook, we do not know what the variable 'year' is referring to)
+- **Impact**: 
+  - Rows affected:  61,408 rows removed  
+  - Data distribution change: reduces the data from removing the rows with a year greater than '2024'
 
 ## 3. Final State Analysis
 
